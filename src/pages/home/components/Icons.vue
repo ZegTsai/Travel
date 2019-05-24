@@ -80,6 +80,8 @@ export default {
   @import '../../../assets/styles/mixins.styl'
   .icons >>> .swiper-container
     padding-bottom: 50%
+  .icons
+    margin-top: .2rem
   .icon
     position: relative
     overflow: hidden
