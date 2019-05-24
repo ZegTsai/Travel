@@ -9,7 +9,7 @@
       <input value="输入城市游玩/购物/吃喝" class="input-icon" />
       </div>
     </div>
-    <div class="header-right arrow-icon">城市
+    <div class="header-right arrow-icon">{{this.city}}
       <span class="iconfont">&#xe64a;</span>
     </div>
   </div>
@@ -18,6 +18,9 @@
 <script>
 export default {
   name: 'HomeHeader',
+  props: {
+    city: String
+  },
   data () {
     return {
     }

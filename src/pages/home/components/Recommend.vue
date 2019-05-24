@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="title">热销推荐</div>
+    <div class="title">热门推荐</div>
     <div>
     <ul v-for="item of recommendList" :key="item.id">
         <li class="item">
-            <img class="item-img" :src='item.imgUrl' />
+            <img class="item-img" :src="item.imgUrl" />
             <div class="item-info">
               <h3 class="item-title">{{item.title}}</h3>
               <p class="item-desc">{{item.desc}}</p>
@@ -23,30 +23,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    recommendList: Array
+  },
   data () {
     return {
-      recommendList: [{
-        id: '0001',
-        title: '顺德游乐园',
-        desc: '亲子游玩，偷得浮生半日闲',
-        prize: '70',
-        address: '顺德',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1807/77/77570cc3ebf7d9d8a3.img.jpg_200x200_d36ff68e.jpg'
-      }, {
-        id: '0002',
-        title: '西樵山国艺影视城',
-        desc: '领略西樵山的风采，何启龙的家',
-        prize: '50',
-        address: '南海',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1903/d8/d8e8a2cb6332b603a3.img.jpg_200x200_696dc2bd.jpg'
-      }, {
-        id: '0003',
-        title: '美的探索王国',
-        desc: '人造风景，现代化与传统的完美结合',
-        prize: '80',
-        address: '顺德',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1707/3f/3f85f2697cd4b2d1a3.water.jpg_200x200_65dd55b7.jpg'
-      }]
     }
   }
 }
@@ -54,7 +35,6 @@ export default {
 
 <style lang="stylus" scope>
   .title
-    margin-top: .2rem
     line-height: .8rem
     background #eee
     text-indent: .2rem
