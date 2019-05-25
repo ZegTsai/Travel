@@ -9,9 +9,11 @@
       <input value="输入城市游玩/购物/吃喝" class="input-icon" />
       </div>
     </div>
-    <div class="header-right arrow-icon">{{this.city}}
-      <span class="iconfont">&#xe64a;</span>
-    </div>
+    <router-link to='/city'>
+      <div class="header-right arrow-icon">{{this.city}}
+        <span class="iconfont">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -57,6 +59,7 @@ export default {
       width: 1.24rem
       text-align: center
       float: right
+      color: white
       .arrow-icn
         font-size: .2rem
 </style>

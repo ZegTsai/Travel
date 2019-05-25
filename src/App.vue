@@ -6,10 +6,12 @@
 
 <script>
 import Home from './pages/home/Home'
+import City from './pages/city/City'
 export default {
   name: 'App',
   components: {
-    Home
+    Home,
+    City
   }
 }
 </script>
