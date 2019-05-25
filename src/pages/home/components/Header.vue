@@ -6,7 +6,7 @@
     <div class="header-input" >
       <div>
       <span class="iconfont input-icon">&#xe632;</span>
-      <input value="输入城市游玩/购物/吃喝" class="input-icon" />
+      <input placeholder="输入城市游玩/购物/吃喝" type="text" class="input-icon" />
       </div>
     </div>
     <router-link to='/city'>

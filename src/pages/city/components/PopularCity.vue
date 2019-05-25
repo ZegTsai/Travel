@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="city-zmpx">
     <div class="popular-city">
       <h2 class="title">热门城市</h2>
       <div class="city-box" v-for="item of cityList" :key="item.id">
@@ -130,31 +130,41 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .popular-city
-    background: #eee
-    height: 5rem
-    .title
-      line-height: .7rem
-      background #eee
-      text-indent: .3rem
-      font-size: .25rem
-    .city-box
-      height: 1rem
-      float: left
-      width:  2.45rem
-      text-align: center
-      line-height: 1rem
-      background: #fff
-      border: 0.023rem solid #eee
-  .zm-px
-    background: #eee
-    height: 5.3rem
-    .zm-box
-      height: 1.2rem
-      float: left
-      width:  1.2rem
-      text-align: center
-      line-height: 1rem
-      background: #fff
-      border: 0.023rem solid #eee
+  .city-zmpx
+    height: 70%
+    .popular-city
+      background: #eee
+      height: 50%
+      .title
+        line-height: .7rem
+        background #eee
+        text-indent: .3rem
+        font-size: .25rem
+        height: 5.5%
+      .city-box
+        height: 7.5%
+        float: left
+        width: 32.6%
+        text-align: center
+        line-height: 1rem
+        background: #fff
+        border: 0.023rem solid #eee
+    .zm-px
+      margin-top: 0.1rem
+      background: #eee
+      height: 50%
+      .title
+        line-height: .7rem
+        background #eee
+        text-indent: .3rem
+        font-size: .25rem
+        height: 5.5%
+      .zm-box
+        height: 7.5%
+        float: left
+        width:  16%
+        text-align: center
+        line-height: 1rem
+        background: #fff
+        border: 0.023rem solid #eee
 </style>
