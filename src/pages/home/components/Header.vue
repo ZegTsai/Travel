@@ -55,6 +55,7 @@ export default {
       color: #ccc
       .input-icon
         color: grey
+        margin-bottom: .1rem
     .header-right
       width: 1.24rem
       text-align: center
