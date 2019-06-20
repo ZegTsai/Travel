@@ -1,9 +1,9 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
-    <popular-city :cityList='cities' :hot='hotCities'></popular-city>
-    <alphabet :cityList='cities'></alphabet>
+    <!-- @change是为了获得点击的字母，以实现跳转到对应首字母区域 -->
+    <popular-city :cityList='cities' :hot='hotCities' :letter="letter" ></popular-city>
+    <alphabet :cityList='cities' @change='handleLetterChange'></alphabet>
   </div>
 </template>
 
@@ -11,24 +11,25 @@
 import axios from 'axios'
 import CityHeader from './components/Header'
 import PopularCity from './components/PopularCity'
-import CitySearch from './components/Search'
 import Alphabet from './components/Alphabet'
 
 export default {
   name: 'City',
+  props: 'letter',
   data () {
     return {
       cities: {},
-      hotCities: []
+      hotCities: [],
+      letter: ' '
     }
   },
   components: {
     CityHeader,
     PopularCity,
-    CitySearch,
     Alphabet
   },
   methods: {
+    /* 利用axios获得静态资源的数据 */
     getCityInfo () {
       axios.get('/api/city.json')
         .then(this.handleGetCityInfoSucc)
@@ -40,6 +41,10 @@ export default {
         this.cities = data.cities
         this.hotCities = data.hotCities
       }
+    },
+    /* 拿到子组件传过来的字母（被用户点击的），并赋值为this.letter，再数据绑定传给子组件 */
+    handleLetterChange (letter) {
+      this.letter = letter
     }
   },
   mounted () {
