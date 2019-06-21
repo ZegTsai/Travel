@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div class="header" id="city-header">
       <div class="header-top">
         <div class="header-top-left">
@@ -18,14 +19,79 @@
       </div>
       <!-- 查找框 -->
       <div class="search">
-        <input class="search-input" type="text" placeholder="输入城市名或拼音"/>
+        <input class="search-input" v-model="keyword" type="text" placeholder="输入城市名或拼音"/>
       </div>
     </div>
+    <!-- 显示查找内容 -->
+    <div
+    class="search-content"
+    ref="search"
+    v-show="keyword"
+    >
+      <ul class="search-content-ul">
+        <li class="search-content-li"
+        v-for="item of list"
+        :key='item.id'>
+        {{item.name}}
+        </li>
+        <li class="search-content-li" v-show="hasNoData">没有找到匹配城市</li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
+import Bscroll from 'better-scroll'
 export default {
-  name: 'CityHeader'
+  name: 'CityHeader',
+  props: {
+    cities: Object
+  },
+  data () {
+    return {
+      keyword: '',
+      list: [],
+      timer: null
+    }
+  },
+  computed: {
+    hasNoData () {
+      return !this.list.length
+    }
+  },
+  watch: {
+    /* cities数据的格式(对象：键为首字母，值为一个城市的数组集合)：
+    {A：[{城市1]，{城市2}]，B：[{城市1]，{城市2}]}
+    */
+    keyword () {
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      /* 当没有搜索内容输入的时候，清空list */
+      if (!this.keyword) {
+        this.list = []
+        return
+      }
+      this.timer = setTimeout(() => {
+        /* 定义一个result的空数组，用以存放搜索到item */
+        const result = []
+        /* i为键位由A到Z循环一遍 */
+        for (let i in this.cities) {
+          /* 根据键位遍历对应首字母的城市的数据（包括id、spell和name） */
+          this.cities[i].forEach((value) => {
+            /* 如果对应的值，拼写或名字有包含搜索的内容，则把值放到result中 */
+            if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+              result.push(value)
+            }
+          })
+        }
+        this.list = result
+      }, 100)
+    }
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.search)
+  }
 }
 </script>
 
@@ -91,4 +157,20 @@ export default {
         background-color: #fff
         border-radius: .06rem
         color: #666
+  .search-content
+    text-indent: .2rem
+    text-align: left
+    overflow: hidden
+    position: absolute
+    top: 2.2rem
+    height: 5rem
+    left: 0
+    right: 0
+    bottom: 0
+    .search-content-ul
+      background-color: #fff
+      .search-content-li
+        border-bottom: .01rem solid #ccc
+        height: .7rem
+        line-height: .7rem
 </style>

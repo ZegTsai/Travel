@@ -1,7 +1,10 @@
 <template>
   <div class="icons">
+    <!-- 滑动插件 -->
     <swiper :options="swiperOption">
+      <!-- 遍历滑动页数(此处为9个icon，每页8个，分为2页) -->
       <swiper-slide v-for="(page,index) of pages" :key="index">
+        <!-- 遍历某一页中每一个icon、图像与描述 -->
         <div class="icon"  v-for="item of page" :key="item.id">
           <div class="icon-img">
             <img class="icon-img-content" :src="item.imgUrl"/>
@@ -17,7 +20,7 @@
 export default {
   name: 'HomeIcons',
   props: {
-    iconsList: Array
+    icons: Array
   },
   data () {
     return {
@@ -29,14 +32,20 @@ export default {
   computed: {
     pages () {
       const pages = []
-      this.iconsList.forEach((item, index) => {
-        const page = Math.floor(index / 8)
-        if (!pages[page]) {
-          pages[page] = []
-        }
-        pages[page].push(item)
-      })
-      return pages
+      if (this.icons) {
+        this.icons.forEach((item, index) => {
+          /* 根据向下取整的结果判断icon是落在第几页 */
+          const page = Math.floor(index / 8)
+          if (!pages[page]) {
+            /* 定义数组里边的项类型也是数组 */
+            pages[page] = []
+          }
+          /* 由上面判断第几页后，把项放到对应页中 */
+          pages[page].push(item)
+        })
+        return pages
+        /* 最后返回的是pages=[[1,2,3,4,5,6,7,8],[1]] */
+      }
     }
   }
 }

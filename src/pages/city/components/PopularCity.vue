@@ -48,6 +48,7 @@ import Bscroll from 'better-scroll'
 export default {
   name: 'PopularCity',
   props: {
+    /* cityList和hot是父组件从静态资源中读取的数据 */
     cityList: Object,
     hot: Array,
     /* letter是兄弟组件Alphabet发送来的 */

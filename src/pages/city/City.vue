@@ -1,8 +1,8 @@
 <template>
   <div>
-    <city-header></city-header>
     <!-- @change是为了获得点击的字母，以实现跳转到对应首字母区域 -->
     <popular-city :cityList='cities' :hot='hotCities' :letter="letter" ></popular-city>
+    <city-header :cities="cities"></city-header>
     <alphabet :cityList='cities' @change='handleLetterChange'></alphabet>
   </div>
 </template>
