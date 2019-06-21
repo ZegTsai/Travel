@@ -31,7 +31,9 @@
       <ul class="search-content-ul">
         <li class="search-content-li"
         v-for="item of list"
-        :key='item.id'>
+        :key='item.id'
+        @click='handleCityClick(item.name)'
+        >
         {{item.name}}
         </li>
         <li class="search-content-li" v-show="hasNoData">没有找到匹配城市</li>
@@ -41,6 +43,8 @@
 </template>
 
 <script>
+/* 载入vuex的API */
+import { mapState, mapMutations } from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityHeader',
@@ -57,7 +61,22 @@ export default {
   computed: {
     hasNoData () {
       return !this.list.length
-    }
+    },
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
+  methods: {
+    handleCityClick (city) {
+      /*
+      this.$store.dispatch('changeCity', city)
+      用mapMutations这个API替换成下边的代码
+      */
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    /* 用mapMutations这个API时可以映射发送的数据 */
+    ...mapMutations(['changeCity'])
   },
   watch: {
     /* cities数据的格式(对象：键为首字母，值为一个城市的数组集合)：
