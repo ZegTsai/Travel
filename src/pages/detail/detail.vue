@@ -5,12 +5,17 @@
     :sightName="sightName"
     :bannerImg="bannerImg"
     ></detail-banner>
+    <detail-header
+    :sightName="sightName"
+    ></detail-header>
+    <div class="content"></div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import DetailBanner from './components/Banner'
+import DetailHeader from './components/header'
 export default {
   name: 'Detail',
   data () {
@@ -21,7 +26,8 @@ export default {
     }
   },
   components: {
-    DetailBanner
+    DetailBanner,
+    DetailHeader
   },
   methods: {
     getDetailInfo () {
@@ -46,5 +52,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+  .content
+    height: 50rem
 </style>

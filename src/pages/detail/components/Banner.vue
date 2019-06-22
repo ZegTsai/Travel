@@ -14,7 +14,7 @@
         <div class="banner-number">
           <span class="iconfont">&#xe692;
           </span>
-          8
+          {{ this.gallaryImgs.length }}
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@ export default {
       width: .7rem
       height: .7rem
       border-radius: .5rem
-      background: rgba(white, .8)
+      background: rgba(white, .7)
       .home-back-icon
         margin: .2rem .15rem
     .banner-img
