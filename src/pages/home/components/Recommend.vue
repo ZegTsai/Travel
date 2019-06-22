@@ -2,19 +2,25 @@
   <div>
     <div class="title">热门推荐</div>
     <div>
-    <ul v-for="item of recommendList" :key="item.id">
-        <li class="item">
-            <img class="item-img" :src="item.imgUrl" />
-            <div class="item-info">
-              <h3 class="item-title">{{item.title}}</h3>
-              <p class="item-desc">{{item.desc}}</p>
-              <button class="item-button">点击查看详情</button>
-              <div class="item-fee">
-              <p class="item-prize">￥{{item.prize}}起</p>
-              <p class="item-address">{{item.address}}区</p>
-              </div>
+    <ul>
+      <router-link
+      tag="li"
+      class="item"
+      v-for="item of recommendList"
+      :key="item.id"
+      :to="'/detail/' + item.id"
+      >
+          <img class="item-img" :src="item.imgUrl" />
+          <div class="item-info">
+            <h3 class="item-title">{{item.title}}</h3>
+            <p class="item-desc">{{item.desc}}</p>
+            <button class="item-button">点击查看详情</button>
+            <div class="item-fee">
+            <p class="item-prize">￥{{item.prize}}起</p>
+            <p class="item-address">{{item.address}}区</p>
             </div>
-        </li>
+          </div>
+      </router-link>
     </ul>
     </div>
   </div>

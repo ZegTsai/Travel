@@ -10,7 +10,6 @@
     @touchend ='handleTouchEnd'
     @click='handleLetterClick'
     >{{item}}</li>
-    <li class="item" style="height:1.4rem"><a>回到顶部</a></li>
   </ul>
 </template>
 
