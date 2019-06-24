@@ -4,6 +4,7 @@
     class="item"
     v-for="(item, index) of list"
     :key="index"
+    :style="listStyle"
     >
       <h2 class="item-title">
         <span class="item-title-icon"></span>
@@ -28,6 +29,7 @@ export default {
   name: 'DetailList',
   data () {
     return {
+      listStyle: {}
     }
   },
   props: {
@@ -36,6 +38,14 @@ export default {
     }
   },
   mounted () {
+    /* 第一次显示会有bug，无奈只好写此代码解决bug */
+    setTimeout(() => {
+      this.listStyle = {
+        'width': '100%',
+        'height': 'auto',
+        'display': 'block'
+      }
+    }, 5)
   }
 }
 </script>
@@ -45,7 +55,6 @@ export default {
   border-bottom: .04rem solid #eee
   .item-title
     position: relative
-    width: 100%
     padding-left: .2rem
     line-height: .88rem
     text-indent: .4rem
