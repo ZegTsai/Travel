@@ -47,13 +47,14 @@ export default {
     window.addEventListener('scroll', this.handleScroll)
   },
   deactivated () {
-  window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
 
 <style lang="stylus" scoped>
   .header
+    z-index: 99
     position: fixed
     top: 0
     left: 0

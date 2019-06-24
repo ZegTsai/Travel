@@ -29,7 +29,7 @@
 <script>
 import CommonGallary from 'common/gallary/gallary'
 export default {
-  name: 'Banner',
+  name: 'DetailBanner',
   props: {
     gallaryImgs: {
       type: Array
@@ -52,7 +52,6 @@ export default {
   methods: {
     handleBannerClick () {
       this.showGallary = true
-      console.log(this.bannerImg)
     },
     handleGallaryClose () {
       this.showGallary = false
